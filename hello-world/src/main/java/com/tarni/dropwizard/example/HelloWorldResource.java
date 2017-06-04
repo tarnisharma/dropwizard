@@ -1,5 +1,6 @@
 package com.tarni.dropwizard.example;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.ws.rs.GET;
@@ -9,6 +10,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.codahale.metrics.annotation.Timed;
+
 
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,11 +25,12 @@ public class HelloWorldResource {
 		this.counter = new AtomicLong();
 	}
 
+	
 	@GET
 	@Timed
 	public Saying sayHello(@QueryParam("name") String name) {
 		System.out.println(name);
-		final String value = String.format(template, name);
+		final String value = String.format(template, name != null ? name : defaultName);
 		return new Saying(counter.incrementAndGet(), value);
 	}
 }
