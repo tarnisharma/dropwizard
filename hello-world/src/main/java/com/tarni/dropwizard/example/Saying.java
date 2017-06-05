@@ -8,7 +8,7 @@ public class Saying {
 	
 	private long id;
 
-	@Length(max = 3)
+	@Length(max = 20)
 	private String content;
 
 	public Saying() {

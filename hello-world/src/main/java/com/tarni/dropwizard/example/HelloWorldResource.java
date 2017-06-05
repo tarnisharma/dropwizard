@@ -1,6 +1,5 @@
 package com.tarni.dropwizard.example;
 
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.ws.rs.GET;
